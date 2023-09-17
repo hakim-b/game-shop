@@ -1,0 +1,31 @@
+{
+  "name": "game-shop",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/toastify-js": "^1.12.1",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "autoprefixer": "^10.4.15",
+    "daisyui": "^3.7.4",
+    "eslint": "^8.49.0",
+    "iconify-icon": "^1.0.8",
+    "postcss": "^8.4.29",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.4",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
+  },
+  "dependencies": {
+    "toastify-js": "^1.12.0",
+    "vanjs-core": "1.2.0-rc.3",
+    "zod": "^3.22.2"
+  }
+}
