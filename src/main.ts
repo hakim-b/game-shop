@@ -93,7 +93,7 @@ function renderCartTable() {
       th(game.id),
       td(game.title),
       td(game.desc),
-      td(game.price),
+      td(formatCurrency(game.price)),
       td(
         button(
           { class: "btn btn-error", onclick: () => removeFromCart(game) },
@@ -130,7 +130,7 @@ function renderCards() {
         h2(
           { class: "card-title" },
           game.title,
-          div({ class: "badge badge-secondary" }, game.price)
+          div({ class: "badge badge-secondary" }, formatCurrency (game.price))
         ),
         p(game.desc),
         div(
