@@ -130,7 +130,7 @@ function renderCards() {
         h2(
           { class: "card-title" },
           game.title,
-          div({ class: "badge badge-secondary" }, formatCurrency (game.price))
+          div({ class: "badge badge-secondary" }, formatCurrency(game.price))
         ),
         p(game.desc),
         div(
