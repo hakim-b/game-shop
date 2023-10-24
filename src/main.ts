@@ -3,7 +3,10 @@ import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 import van from "vanjs-core";
 import "iconify-icon";
-import { Game } from "./types";
+import Game from "./classes/Game";
+import { themeChange } from "theme-change";
+
+themeChange();
 
 const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
   currency: "CAD",
@@ -14,49 +17,43 @@ function formatCurrency(amount: number) {
   return CURRENCY_FORMATTER.format(amount);
 }
 
-const games: Game[] = [
-  {
-    id: crypto.randomUUID(),
-    price: 35.99,
-    title: "Super Smash Bros. Ultimate",
-    desc: "The biggest Super Smash Bros. game ever!",
-    thumbnail: "/src/images/ssbu.jpg",
-  },
-  {
-    id: crypto.randomUUID(),
-    price: 39.99,
-    title: "Cyberpunk 2077",
-    desc: "Step into the shoes of V, a cyberpunk mercenary for hire and do what it takes to make a name for yourself in Night City, a megalopolis obsessed with power, glamour, and body modification. Legends are made here. What will yours be?",
-    thumbnail: "/src/images/cp2077.jpg",
-  },
-  {
-    id: crypto.randomUUID(),
-    price: 25.99,
-    title: "The Witcher 3: Wild Hunt",
-    desc: "One of the most acclaimed RPGs of all time",
-    thumbnail: "/src/images/tw3_ww.jpg",
-  },
-  {
-    id: crypto.randomUUID(),
-    price: 7.99,
-    title: "Fallout: New Vegas",
-    desc: "Battle your way across the heat-blasted Mojave Wasteland to the neon drenched Vegas Strip. Along the way you'll be introduced to a colorful cast of characters, factions, mutated creatures and much more.",
-    thumbnail: "/src/images/fallout_nv.jpg",
-  },
-  {
-    id: crypto.randomUUID(),
-    price: 28.99,
-    title: "The Legend of Zelda: Breath of the Wild",
-    desc: "Forget everything you know about The Legend of Zelda games.",
-    thumbnail: "/src/images/tloz_botw.webp",
-  },
-  {
-    id: crypto.randomUUID(),
-    price: 45.99,
-    title: "Red Dead Redemption 2",
-    desc: "America, 1899. The end of the Wild West era has begun.",
-    thumbnail: "/src/images/rdr.jpg",
-  },
+const games = [
+  new Game(
+    "Cyberpunk 2077",
+    "An open-world, futuristic RPG set in Night City, where players navigate the treacherous world of cyber-enhancements and corporate intrigue.",
+    "/src/images/cp2077.jpg",
+    49.99
+  ),
+  new Game(
+    "Fallout: New Vegas",
+    "A post-apocalyptic RPG that unfolds in the Mojave Wasteland, offering a rich, morally ambiguous narrative in the aftermath of nuclear devastation.",
+    "/src/images/fallout_nv.jpg",
+    9.99
+  ),
+  new Game(
+    "The Legend of Zelda: Breath of the Wild",
+    "A stunning, open-world adventure game that invites players to explore the magical land of Hyrule and defeat the evil Calamity Ganon.",
+    "/src/images/tloz_botw.webp",
+    45.99
+  ),
+  new Game(
+    "Super Smash Bros. Ultimate",
+    "A frenetic, crossover fighting game featuring an extensive roster of characters from various video game franchises.",
+    "./src/images/ssbu.jpg",
+    39.99
+  ),
+  new Game(
+    "The Witcher 3: Wild Hunt",
+    "An epic, dark fantasy RPG that follows Geralt of Rivia as he hunts monsters, navigates political intrigues, and searches for adopted daughter Ciri",
+    "/src/images/tw3_ww.jpg",
+    25.99
+  ),
+  new Game(
+    "Red Dead Redemption II",
+    "A breathtaking open-world Western adventure that immerses players in the waning days of the Wild West, following the outlaw Arthur Morgan and the Van der Linde gang.",
+    "/src/images/rdr.jpg",
+    40.99
+  ),
 ];
 
 const cart = new Set<Game>();
