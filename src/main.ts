@@ -58,16 +58,6 @@ const games = [
 
 const cart = new Set<Game>();
 
-const total = () => {
-  let sum = 0.0;
-
-  cart.forEach((item) => {
-    sum += item.price;
-  });
-
-  return sum;
-};
-
 const listRoot = document.getElementById("listRoot") as HTMLDivElement;
 const tableRoot = document.createElement("div") as HTMLDivElement;
 tableRoot.className = "overflow-x-auto";
@@ -81,6 +71,17 @@ const showList = document.getElementById("showList") as HTMLButtonElement;
 
 const { button, div, figure, h2, img, p, tr, th, td, table, tbody, thead } =
   van.tags;
+
+function setCartState() {
+  const total = Array.from(cart).reduce(
+    (accumulator, currGame) => accumulator + currGame.price,
+    0
+  );
+
+  cartSize.innerText = cart.size.toString();
+  cartAmount.innerText = `${cart.size} Item(s)`;
+  subTotal.innerText = `Subtotal: ${formatCurrency(total)}`;
+}
 
 function renderCartTable() {
   tableRoot.innerHTML = "";
@@ -160,18 +161,14 @@ function addToCart(game: Game) {
     },
   }).showToast();
 
-  cartSize.innerText = cart.size.toString();
-  cartAmount.innerText = `${cart.size} Item(s)`;
-  subTotal.innerText = `Subtotal: ${formatCurrency(total())}`;
+  setCartState();
 }
 
 function removeFromCart(item: Game) {
   if (cart.has(item)) {
     cart.delete(item);
-    cartSize.innerText = cart.size.toString();
-    cartAmount.innerText = `${cart.size} Item(s)`;
+    setCartState();
     renderCartTable();
-    subTotal.innerText = `Subtotal: ${formatCurrency(total())}`;
   }
 
   Toastify({
@@ -188,9 +185,7 @@ function removeFromCart(item: Game) {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderCards();
-  cartSize.innerText = cart.size.toString();
-  cartAmount.innerText = `${cart.size} Item(s)`;
-  subTotal.innerText = `Subtotal: ${formatCurrency(total())}`;
+  setCartState();
 });
 
 viewCart.addEventListener("click", () => {
