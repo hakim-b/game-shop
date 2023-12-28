@@ -101,14 +101,13 @@ function renderCartTable() {
     );
   });
 
-  const cartTable = () =>
-    table(
-      { class: "table" },
-      thead(
-        tr(th("ID"), th("Name"), th("Description"), th("Price"), th("Actions"))
-      ),
-      tbody(cartTableCells)
-    );
+  const cartTable = table(
+    { class: "table" },
+    thead(
+      tr(th("ID"), th("Name"), th("Description"), th("Price"), th("Actions"))
+    ),
+    tbody(cartTableCells)
+  );
 
   van.add(tableRoot, cartTable);
 }
